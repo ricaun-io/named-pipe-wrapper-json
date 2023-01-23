@@ -43,8 +43,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <GitHubRepository>$(PackageId)</GitHubRepository>
-    <GitHubRepositoryOwner>ricaun</GitHubRepositoryOwner>
+    <GitHubRepository>named-pipe-wrapper-json</GitHubRepository>
+    <GitHubRepositoryOwner>ricaun-io</GitHubRepositoryOwner>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/$(GitHubRepositoryOwner)/$(GitHubRepository)</PackageProjectUrl>
     <RepositoryUrl>https://github.com/$(GitHubRepositoryOwner)/$(GitHubRepository)</RepositoryUrl>
