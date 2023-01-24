@@ -28,7 +28,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
 
             var gitHubName = GitRepository.GetGitHubName();
             var gitHubOwner = GitRepository.GetGitHubOwner();
-            var version = MainProject.GetInformationalVersion() ?? "1.0.0";
+            var version = MainProject.GetInformationalVersion() ?? "1.0.0-dev";
 
             Serilog.Log.Information($"Repository: {gitHubName} Owner: {gitHubOwner} Version: {version}");
 
@@ -36,15 +36,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
             Serilog.Log.Information($"RemoteName: {GitRepository.RemoteName} RemoteBranch: {GitRepository.RemoteBranch}");
             Serilog.Log.Information($"Branch: {GitRepository.Branch} Tags: {string.Join(" ", GitRepository.Tags)}");
 
-            //var newRelease = new Octokit.NewRelease(version)
-            //{
-            //    Name = version,
-            //    Body = GetReleaseNotes(),
-            //    Draft = true,
-            //    TargetCommitish = GitVersion.Sha
-            //};
-
-            //var draft = GitHubExtension.CreatedDraft(gitHubOwner, gitHubName, newRelease);
+            
 
             //Serilog.Log.Information($"CreatedDraft: {newRelease}");
 
@@ -69,6 +61,16 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
                 {
                     Serilog.Log.Warning($"The repository already contains a Release with the tag: {version}");
                 }
+
+                var newRelease = new Octokit.NewRelease(version)
+                {
+                    Name = version,
+                    Body = GetReleaseNotes(),
+                    Draft = true,
+                    TargetCommitish = GitVersion.Sha
+                };
+
+                var draft = GitHubExtension.CreatedDraft(gitHubOwner, gitHubName, newRelease);
             }
             catch (System.Exception ex)
             {
