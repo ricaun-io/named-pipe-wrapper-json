@@ -66,10 +66,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="9.*" />
   </ItemGroup>
 
-  <ItemGroup Condition="$(Configuration.Contains('Debug'))">
-    <Reference Include="System.Web.Extensions" />
-  </ItemGroup>
-
   <ItemGroup>
     <None Include="..\README.md">
       <Pack>True</Pack>
