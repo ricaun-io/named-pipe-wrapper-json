@@ -127,9 +127,6 @@
             ]
           }
         },
-        "TestBuildStopWhenFailed": {
-          "type": "boolean"
-        },
         "TestResults": {
           "type": "boolean"
         },
