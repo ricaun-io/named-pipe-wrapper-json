@@ -18,7 +18,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
         .TriggeredBy(Clean)
         .Requires(() => GitRepository)
         .OnlyWhenStatic(() => GitHubToken.SkipEmpty())
-        .Executes(() =>
+        .Executes(async () =>
         {
             // GitVersion.BranchName
             Serilog.Log.Information(GitVersion.BranchName);
@@ -69,8 +69,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
                     Draft = true,
                     TargetCommitish = GitVersion.Sha
                 };
-
-                var draft = GitHubExtension.CreatedDraft(gitHubOwner, gitHubName, newRelease);
+                var draft = await GitHubTasks.GitHubClient.Repository.Release.Create(gitHubOwner, gitHubName, newRelease);
             }
             catch (System.Exception ex)
             {
