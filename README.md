@@ -1,4 +1,11 @@
-# Named Pipe Wrapper for .NET 4.0
+# Named Pipe Wrapper Json for .NET 4.0
+
+[![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](../..)
+[![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
+[![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
+[![Build](../../actions/workflows/Build.yml/badge.svg)](../../actions)
+
+***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper)***
 
 A simple, easy to use, strongly-typed wrapper around .NET named pipes.
 
@@ -13,9 +20,14 @@ Available as a [NuGet package](https://www.nuget.org/packages/NamedPipeWrapper/)
 *  Messages are sent and received asynchronously on a separate background thread and marshalled back to the calling thread (typically the UI).
 *  Supports large messages - up to 300 MiB.
 
+## Json
+
+By default, all classes gonna be serialized/deserialized by `JsonUtils` that use `Newtonsoft.Json`, in the end, a JSON string is passed using the `PipeStream`.
+
 # Requirements
 
-Requires .NET 4.0 full.
+* Requires .NET 4.0 full.
+* Requires [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) >= 9.0.1
 
 # Usage
 
