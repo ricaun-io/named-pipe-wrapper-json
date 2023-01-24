@@ -16,6 +16,9 @@ jobs:
   Build:
     name: Build
     runs-on: windows-latest
+    permissions:
+      packages: write
+      contents: write
     steps:
       - uses: actions/checkout@v1
       - name: Run './build/build.cmd'
