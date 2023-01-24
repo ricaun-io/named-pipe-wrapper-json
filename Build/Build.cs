@@ -60,6 +60,11 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
             ////}
             try
             {
+                GitHubTasks.GitHubClient = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(Solution.Name))
+                {
+                    Credentials = new Octokit.Credentials(GitHubToken)
+                };
+
                 if (GitHubExtension.CheckTags(gitHubOwner, gitHubName, version))
                 {
                     Serilog.Log.Warning($"The repository already contains a Release with the tag: {version}");
