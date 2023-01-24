@@ -17,6 +17,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
     Target ShowGitVersion => _ => _
         .TriggeredBy(Clean)
         .Requires(() => GitRepository)
+        .OnlyWhenStatic(() => GitHubToken.SkipEmpty())
         .Executes(async () =>
         {
             // GitVersion.BranchName
@@ -46,6 +47,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
             //var draft = GitHubExtension.CreatedDraft(gitHubOwner, gitHubName, newRelease);
 
             //Serilog.Log.Information($"CreatedDraft: {newRelease}");
+
 
             var gitHubTags = await GitHubTasks.GitHubClient.Repository.GetAllTags(gitHubOwner, gitHubName);
 
