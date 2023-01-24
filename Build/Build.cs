@@ -33,6 +33,11 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
 
             var version = MainProject.GetInformationalVersion();
 
+            foreach (var repo in GitHubTasks.GitHubClient.Repository.GetAllPublic().Result)
+            {
+                Serilog.Log.Warning($"Repository: {repo.Name}");
+            }
+
             if (GitHubExtension.CheckTags(gitHubOwner, gitHubName, version))
             {
                 Serilog.Log.Warning($"The repository already contains a Release with the tag: {version}");
