@@ -18,7 +18,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
         .TriggeredBy(Clean)
         .Requires(() => GitRepository)
         .OnlyWhenStatic(() => GitHubToken.SkipEmpty())
-        .Executes(async () =>
+        .Executes(() =>
         {
             // GitVersion.BranchName
             Serilog.Log.Information(GitVersion.BranchName);
@@ -48,22 +48,28 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
 
             //Serilog.Log.Information($"CreatedDraft: {newRelease}");
 
-            GitHubTasks.GitHubClient.Credentials = new Octokit.Credentials(GitHubToken);
+            //GitHubTasks.GitHubClient.Credentials = new Octokit.Credentials(GitHubToken);
 
-            var gitHubTags = await GitHubTasks.GitHubClient.Repository.GetAllTags(gitHubOwner, gitHubName);
+            //var gitHubTags = await GitHubTasks.GitHubClient.Repository.GetAllTags(gitHubOwner, gitHubName);
 
-            Serilog.Log.Information($"GetAllTags: {gitHubTags.Count}");
+            //Serilog.Log.Information($"GetAllTags: {gitHubTags.Count}");
 
-            //foreach (var repo in GitHubTasks.GitHubClient.Repository.GetAllPublic().Result)
-            //{
-            //    Serilog.Log.Warning($"Repository: {repo.Name}");
-            //}
-
-            if (GitHubExtension.CheckTags(gitHubOwner, gitHubName, version))
+            ////foreach (var repo in GitHubTasks.GitHubClient.Repository.GetAllPublic().Result)
+            ////{
+            ////    Serilog.Log.Warning($"Repository: {repo.Name}");
+            ////}
+            try
             {
-                Serilog.Log.Warning($"The repository already contains a Release with the tag: {version}");
+                if (GitHubExtension.CheckTags(gitHubOwner, gitHubName, version))
+                {
+                    Serilog.Log.Warning($"The repository already contains a Release with the tag: {version}");
+                }
             }
-
+            catch (System.Exception ex)
+            {
+                Serilog.Log.Error($"{ex}");
+            }
+            
             // GetReleaseNotes
             Serilog.Log.Information(GetReleaseNotes());
         });
