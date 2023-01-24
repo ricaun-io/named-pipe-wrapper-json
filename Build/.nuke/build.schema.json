@@ -99,6 +99,7 @@
               "GitRelease",
               "Pack",
               "Release",
+              "ShowGitVersion",
               "Sign",
               "Test"
             ]
@@ -120,6 +121,7 @@
               "GitRelease",
               "Pack",
               "Release",
+              "ShowGitVersion",
               "Sign",
               "Test"
             ]
