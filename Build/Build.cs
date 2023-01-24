@@ -3,6 +3,7 @@ using Nuke.Common.Execution;
 using Nuke.Common.Tools.GitHub;
 using ricaun.Nuke;
 using ricaun.Nuke.Components;
+using ricaun.Nuke.Extensions;
 
 internal class Build : NukeBuild, IPublishPack, ITest, IShowGitVersion
 {
@@ -11,7 +12,7 @@ internal class Build : NukeBuild, IPublishPack, ITest, IShowGitVersion
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 }
 
-public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitRepository, IClean
+public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitRepository, IClean, IHazMainProject
 {
     Target ShowGitVersion => _ => _
         .TriggeredBy(Clean)
@@ -29,6 +30,13 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
 
             Serilog.Log.Information(gitHubName);
             Serilog.Log.Information(gitHubOwner);
+
+            var version = MainProject.GetInformationalVersion();
+
+            if (GitHubExtension.CheckTags(gitHubOwner, gitHubName, version))
+            {
+                Serilog.Log.Warning($"The repository already contains a Release with the tag: {version}");
+            }
 
             // GetReleaseNotes
             Serilog.Log.Information(GetReleaseNotes());
