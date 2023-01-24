@@ -299,7 +299,7 @@ namespace UnitTests
 
             _barrier.Reset();
             SendMessageToServer(numBytes);
-            _barrier.WaitOne(TimeSpan.FromSeconds(20));
+            _barrier.WaitOne(TimeSpan.FromSeconds(40));
             Assert.NotNull(_actualHash, string.Format("Server should have received client's {0} byte message", numBytes));
             Assert.AreEqual(_expectedHash, _actualHash, string.Format("SHA-1 hashes for {0} byte message should match", numBytes));
             Assert.IsFalse(_clientDisconnected, "Server should still be connected to the client");

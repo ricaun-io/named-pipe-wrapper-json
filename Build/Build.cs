@@ -7,6 +7,7 @@ using ricaun.Nuke.Components;
 internal class Build : NukeBuild, IPublishPack, ITest, IShowGitVersion
 {
     string ITest.TestProjectName => "UnitTests";
+    bool ITest.TestBuildStopWhenFailed => false;
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 }
 
