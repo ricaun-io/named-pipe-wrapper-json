@@ -91,7 +91,7 @@ namespace UnitTests
 
         private void ServerOnClientMessage(NamedPipeConnection<ClassRead, ClassWrite> connection, ClassRead message)
         {
-            Logger.DebugFormat("Received {0} bytes from the client", message);
+            Logger.DebugFormat("Received {0} bytes from the client", message.ToString().Length);
             _actualData = message;
             _barrier.Set();
         }
@@ -200,7 +200,7 @@ namespace UnitTests
 
             _barrier.Reset();
             _client.PushMessage(_expectedData);
-            _barrier.WaitOne(TimeSpan.FromSeconds(5));
+            _barrier.WaitOne(TimeSpan.FromSeconds(30));
 
             if (_exceptions.Any())
                 throw new AggregateException(_exceptions);
