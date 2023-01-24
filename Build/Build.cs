@@ -5,10 +5,10 @@ using ricaun.Nuke;
 using ricaun.Nuke.Components;
 using ricaun.Nuke.Extensions;
 
-internal class Build : NukeBuild, IPublishPack, ITest, IShowGitVersion
+internal class Build : NukeBuild, IPublishPack, IShowGitVersion//, ITest
 {
-    string ITest.TestProjectName => "UnitTests";
-    bool ITest.TestBuildStopWhenFailed => false;
+    //string ITest.TestProjectName => "UnitTests";
+    //bool ITest.TestBuildStopWhenFailed => false;
     public static int Main() => Execute<Build>(x => x.From<IPublishPack>().Build);
 }
 
@@ -28,7 +28,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
 
             var gitHubName = GitRepository.GetGitHubName();
             var gitHubOwner = GitRepository.GetGitHubOwner();
-            var version = MainProject.GetInformationalVersion() ?? "1.0.0-dev";
+            var version = MainProject.GetInformationalVersion() ?? "1.0.0";
 
             Serilog.Log.Information($"Repository: {gitHubName} Owner: {gitHubOwner} Version: {version}");
 
