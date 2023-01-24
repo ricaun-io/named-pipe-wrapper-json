@@ -17,7 +17,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
     Target ShowGitVersion => _ => _
         .TriggeredBy(Clean)
         .Requires(() => GitRepository)
-        .Executes(() =>
+        .Executes(async () =>
         {
             // GitVersion.BranchName
             Serilog.Log.Information(GitVersion.BranchName);
@@ -27,16 +27,34 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
 
             var gitHubName = GitRepository.GetGitHubName();
             var gitHubOwner = GitRepository.GetGitHubOwner();
+            var version = MainProject.GetInformationalVersion() ?? "1.0.0";
 
-            Serilog.Log.Information(gitHubName);
-            Serilog.Log.Information(gitHubOwner);
+            Serilog.Log.Information($"Repository: {gitHubName} Owner: {gitHubOwner} Version: {version}");
+            
+            Serilog.Log.Information($"Identifier: {GitRepository.Identifier}");
+            Serilog.Log.Information($"RemoteName: {GitRepository.RemoteName} RemoteBranch: {GitRepository.RemoteBranch}");
+            Serilog.Log.Information($"Branch: {GitRepository.Branch} Tags: {string.Join(" ",GitRepository.Tags)}");
 
-            var version = MainProject.GetInformationalVersion();
+            //var newRelease = new Octokit.NewRelease(version)
+            //{
+            //    Name = version,
+            //    Body = GetReleaseNotes(),
+            //    Draft = true,
+            //    TargetCommitish = GitVersion.Sha
+            //};
 
-            foreach (var repo in GitHubTasks.GitHubClient.Repository.GetAllPublic().Result)
-            {
-                Serilog.Log.Warning($"Repository: {repo.Name}");
-            }
+            //var draft = GitHubExtension.CreatedDraft(gitHubOwner, gitHubName, newRelease);
+
+            //Serilog.Log.Information($"CreatedDraft: {newRelease}");
+
+            var gitHubTags = await GitHubTasks.GitHubClient.Repository.GetAllTags(gitHubOwner, gitHubName);
+
+            Serilog.Log.Information($"GetAllTags: {gitHubTags.Count}");
+
+            //foreach (var repo in GitHubTasks.GitHubClient.Repository.GetAllPublic().Result)
+            //{
+            //    Serilog.Log.Warning($"Repository: {repo.Name}");
+            //}
 
             if (GitHubExtension.CheckTags(gitHubOwner, gitHubName, version))
             {
