@@ -31,10 +31,10 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
             var version = MainProject.GetInformationalVersion() ?? "1.0.0";
 
             Serilog.Log.Information($"Repository: {gitHubName} Owner: {gitHubOwner} Version: {version}");
-            
+
             Serilog.Log.Information($"Identifier: {GitRepository.Identifier}");
             Serilog.Log.Information($"RemoteName: {GitRepository.RemoteName} RemoteBranch: {GitRepository.RemoteBranch}");
-            Serilog.Log.Information($"Branch: {GitRepository.Branch} Tags: {string.Join(" ",GitRepository.Tags)}");
+            Serilog.Log.Information($"Branch: {GitRepository.Branch} Tags: {string.Join(" ", GitRepository.Tags)}");
 
             //var newRelease = new Octokit.NewRelease(version)
             //{
@@ -48,6 +48,7 @@ public interface IShowGitVersion : IHazGitVersion, IHazChangelog, IHazGitReposit
 
             //Serilog.Log.Information($"CreatedDraft: {newRelease}");
 
+            GitHubTasks.GitHubClient.Credentials = new Octokit.Credentials(GitHubToken);
 
             var gitHubTags = await GitHubTasks.GitHubClient.Repository.GetAllTags(gitHubOwner, gitHubName);
 
