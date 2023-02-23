@@ -40,8 +40,18 @@ namespace NamedPipeWrapper.Json
             {
                 return false;
             }
-            return type.IsClass;
+            if (type.IsClass)
+            {
+                if (type.GetCustomAttributes(typeof(SerializableAttribute), true).Length > 0)
+                {
+                    Console.WriteLine(type);
+                    return false;
+                }
+
+                return true;
+            }
+            return false;
         }
-        
+
     }
 }
