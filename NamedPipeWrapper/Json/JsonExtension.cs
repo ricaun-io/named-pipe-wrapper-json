@@ -44,7 +44,6 @@ namespace NamedPipeWrapper.Json
             {
                 if (type.GetCustomAttributes(typeof(SerializableAttribute), true).Length > 0)
                 {
-                    Console.WriteLine(type);
                     return false;
                 }
 
