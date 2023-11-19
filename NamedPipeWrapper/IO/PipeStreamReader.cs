@@ -69,9 +69,7 @@ namespace NamedPipeWrapper.IO
             BaseStream.Read(data, 0, len);
             using (var memoryStream = new MemoryStream(data))
             {
-                if (JsonExtension.IsTypeJson(typeof(T)))
-                    return (T)_binaryFormatter.Deserialize(memoryStream).ToString().JsonDeserialize<T>();
-                return (T)_binaryFormatter.Deserialize(memoryStream);
+                return _binaryFormatter.JsonDeserialize<T>(memoryStream);
             }
         }
 
