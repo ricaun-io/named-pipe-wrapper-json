@@ -42,11 +42,7 @@ namespace NamedPipeWrapper.IO
             {
                 using (var memoryStream = new MemoryStream())
                 {
-                    if (JsonExtension.IsTypeJson(typeof(T)))
-                        _binaryFormatter.Serialize(memoryStream, obj.JsonSerialize());
-                    else
-                        _binaryFormatter.Serialize(memoryStream, obj);
-                    return memoryStream.ToArray();
+                    return _binaryFormatter.JsonSerialize(memoryStream, obj);
                 }
             }
             catch

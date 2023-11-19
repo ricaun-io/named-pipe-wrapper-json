@@ -7,18 +7,33 @@ using System.Threading;
 
 namespace UnitTests
 {
-    public class StringTests
+    public class StringClassTests
     {
+        public class StringClass
+        {
+            public string Text { get; set; } = "Text";
+            public override bool Equals(object obj)
+            {
+                if (obj is StringClass c)
+                    return Text == c.Text;
+                return false;
+            }
+            public override int GetHashCode()
+            {
+                return Text.GetHashCode();
+            }
+        }
+
         private static readonly log4net.ILog Logger =
             log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        private const string PipeName = "string_test_pipe";
+        private const string PipeName = "string_class_test_pipe";
 
-        private NamedPipeServer<string> _server;
-        private NamedPipeClient<string> _client;
+        private NamedPipeServer<StringClass> _server;
+        private NamedPipeClient<StringClass> _client;
 
-        private string _expectedData;
-        private string _actualData;
+        private StringClass _expectedData;
+        private StringClass _actualData;
 
         private DateTime _startTime;
 
@@ -37,8 +52,8 @@ namespace UnitTests
             _barrier.Reset();
             _exceptions.Clear();
 
-            _server = new NamedPipeServer<string>(PipeName);
-            _client = new NamedPipeClient<string>(PipeName);
+            _server = new NamedPipeServer<StringClass>(PipeName);
+            _client = new NamedPipeClient<StringClass>(PipeName);
 
             _expectedData = null;
             _actualData = null;
@@ -86,8 +101,9 @@ namespace UnitTests
 
         #region Events
 
-        private void ServerOnClientMessage(NamedPipeConnection<string, string> connection, string message)
+        private void ServerOnClientMessage(NamedPipeConnection<StringClass, StringClass> connection, StringClass message)
         {
+            Console.WriteLine(message);
             Logger.DebugFormat("Received {0} bytes from the client", message.ToString().Length);
             _actualData = message;
             _barrier.Set();
@@ -101,7 +117,7 @@ namespace UnitTests
             var random = new Random();
             for (int i = 0; i < 10; i++)
             {
-                TestClass(random.Next().ToString());
+                TestClassString(new StringClass());
             }
         }
 
@@ -109,7 +125,7 @@ namespace UnitTests
         public void TestEvent_ConnectedDisconnected()
         {
             var message = "";
-            var client = new NamedPipeClient<string>(PipeName);
+            var client = new NamedPipeClient<StringClass>(PipeName);
             client.Connected += (connection) =>
             {
                 message = $"Connected: {connection.Id}";
@@ -133,7 +149,7 @@ namespace UnitTests
             Assert.IsTrue(message.Contains("Disconnected"), "Event Disconnected trigger before WaitForDisconnection.");
         }
 
-        private void TestClass(string _expectedValue)
+        private void TestClassString(StringClass _expectedValue)
         {
             _expectedData = _expectedValue;
 

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] / 2023-11-19
+### Features
+- Add `net6.0-windows` support.
+### Tests
+- Add `net6.0-windows` support.
+
 ## [1.5.3] / 2023-02-28
 ### Features
 - Add `Connected` event in `NamedPipeClient`
@@ -26,6 +32,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Update `Test` project
 
 [vNext]: ../../compare/1.5.0...HEAD
+[1.6.0]: ../../compare/1.5.3...1.6.0
 [1.5.3]: ../../compare/1.5.2...1.5.3
 [1.5.2]: ../../compare/1.5.1...1.5.2
 [1.5.1]: ../../compare/1.5.0...1.5.1

@@ -305,7 +305,19 @@ namespace NamedPipeWrapper
 
         public static NamedPipeServerStream CreatePipe(string pipeName, PipeSecurity pipeSecurity)
         {
+#if NETFRAMEWORK
             return new NamedPipeServerStream(pipeName, PipeDirection.InOut, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous | PipeOptions.WriteThrough, 0, 0, pipeSecurity);
+#else
+            var server = new NamedPipeServerStream(pipeName,
+                PipeDirection.InOut, 1,
+                PipeTransmissionMode.Byte,
+                PipeOptions.Asynchronous | PipeOptions.WriteThrough, 0, 0);
+
+            if (pipeSecurity is not null)
+                server.SetAccessControl(pipeSecurity);
+
+            return server;
+#endif
         }
     }
 }
