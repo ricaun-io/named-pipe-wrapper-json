@@ -22,7 +22,7 @@ namespace NamedPipeWrapper.IO
         /// </summary>
         public PipeStream BaseStream { get; private set; }
 
-        private readonly BinaryFormatter _binaryFormatter = new BinaryFormatter();
+        private readonly IJsonFormatter jsonFormatter = new JsonFormatter();
 
         /// <summary>
         /// Constructs a new <c>PipeStreamWriter</c> object that writes to given <paramref name="stream"/>.
@@ -42,7 +42,7 @@ namespace NamedPipeWrapper.IO
             {
                 using (var memoryStream = new MemoryStream())
                 {
-                    return _binaryFormatter.JsonSerialize(memoryStream, obj);
+                    return jsonFormatter.JsonSerialize(memoryStream, obj);
                 }
             }
             catch

@@ -27,7 +27,7 @@ namespace NamedPipeWrapper.IO
         /// </summary>
         public bool IsConnected { get; private set; }
 
-        private readonly BinaryFormatter _binaryFormatter = new BinaryFormatter();
+        private readonly IJsonFormatter jsonFormatter = new JsonFormatter();
 
         /// <summary>
         /// Constructs a new <c>PipeStreamReader</c> object that reads data from the given <paramref name="stream"/>.
@@ -69,7 +69,7 @@ namespace NamedPipeWrapper.IO
             BaseStream.Read(data, 0, len);
             using (var memoryStream = new MemoryStream(data))
             {
-                return _binaryFormatter.JsonDeserialize<T>(memoryStream);
+                return jsonFormatter.JsonDeserialize<T>(memoryStream);
             }
         }
 
