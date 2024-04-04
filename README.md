@@ -1,4 +1,4 @@
-# Named Pipe Wrapper Json for .NET 4.0
+# Named Pipe Wrapper Json for .NET 4.0 and .NET6.0+
 
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](../..)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)

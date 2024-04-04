@@ -5,7 +5,7 @@ using ricaun.Nuke;
 using ricaun.Nuke.Components;
 using ricaun.Nuke.Extensions;
 
-internal class Build : NukeBuild, IPublishPack, IShowGitVersion, ITest
+internal class Build : NukeBuild, IPublishPack, IShowGitVersion, ITest, IPrePack
 {
     string ITest.TestProjectName => "UnitTests";
     bool ITest.TestBuildStopWhenFailed => false;

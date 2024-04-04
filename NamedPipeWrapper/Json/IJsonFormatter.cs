@@ -1,32 +1,26 @@
-﻿using System;
+﻿using System.IO;
 
 namespace NamedPipeWrapper.Json
 {
     /// <summary>
-    /// JsonExtension
+    /// IJsonFormatter
     /// </summary>
-    public static class JsonExtension
+    public interface IJsonFormatter
     {
         /// <summary>
         /// JsonDeserialize
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
+        /// <param name="memoryStream"></param>
         /// <returns></returns>
-        public static T JsonDeserialize<T>(this string value)
-        {
-            return JsonUtils.DeserializeObject<T>(value);
-        }
-
+        public T JsonDeserialize<T>(MemoryStream memoryStream);
         /// <summary>
         /// JsonSerialize
         /// </summary>
         /// <typeparam name="T"></typeparam>
+        /// <param name="memoryStream"></param>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string JsonSerialize<T>(this T value)
-        {
-            return JsonUtils.SerializeObject<T>(value);
-        }
+        public byte[] JsonSerialize<T>(MemoryStream memoryStream, T value);
     }
 }
