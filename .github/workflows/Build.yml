@@ -26,6 +26,7 @@ jobs:
           dotnet-version: '8.x'
       - run: dotnet tool install --global NETFrameworkTool
       - run: NETFrameworkTool --net 4.0 --install
+      - run: NETFrameworkTool --net 4.5 --install
       
       - name: Run './build/build.cmd'
         run: ./build/build.cmd --root ./build
