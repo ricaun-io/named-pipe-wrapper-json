@@ -2,7 +2,7 @@
 
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](../..)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
-[![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
+[![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Build](../../actions/workflows/Build.yml/badge.svg)](../../actions)
 
 ***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper)***
@@ -73,4 +73,4 @@ client.Start();
 
 # MIT License
 
-Named Pipe Wrapper for .NET is licensed under the [MIT license](LICENSE.txt).
+Named Pipe Wrapper for .NET is licensed under the [MIT license](LICENSE).
