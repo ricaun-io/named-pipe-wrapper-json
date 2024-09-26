@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.8.0] / 2024-09-26
 ### Features
 - Support `IJsonService` to use `NewtonsoftJsonService` if available.
+- Release nuget [ricaun.NamedPipeWrapper.Json](https://www.nuget.org/packages/ricaun.NamedPipeWrapper.Json).
 ### Updated
 - Update namespace to `ricaun.NamedPipeWrapper`.
 - Update package to `ricaun.NamedPipeWrapper.Json`.
