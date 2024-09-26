@@ -64,6 +64,7 @@
     <PackageProjectUrl>https://github.com/$(GitHubRepositoryOwner)/$(GitHubRepository)</PackageProjectUrl>
     <RepositoryUrl>https://github.com/$(GitHubRepositoryOwner)/$(GitHubRepository)</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <!--
     <PackageIcon>icon.png</PackageIcon>
     -->
