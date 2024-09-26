@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace NamedPipeWrapper.Json
+namespace ricaun.NamedPipeWrapper.Json
 {
     /// <summary>
     /// IJsonFormatter

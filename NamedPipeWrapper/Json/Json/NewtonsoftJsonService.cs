@@ -1,4 +1,4 @@
-﻿namespace NamedPipeWrapper.Json.Json
+﻿namespace ricaun.NamedPipeWrapper.Json.Json
 {
     internal class NewtonsoftJsonService : IJsonService
     {

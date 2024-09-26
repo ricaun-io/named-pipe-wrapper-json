@@ -1,5 +1,5 @@
-﻿using NamedPipeWrapper;
-using NamedPipeWrapper.Json;
+﻿using ricaun.NamedPipeWrapper;
+using ricaun.NamedPipeWrapper.Json;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

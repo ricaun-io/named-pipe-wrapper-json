@@ -1,7 +1,7 @@
-﻿using NamedPipeWrapper.Json.Json;
+﻿using ricaun.NamedPipeWrapper.Json.Json;
 using System;
 
-namespace NamedPipeWrapper.Json
+namespace ricaun.NamedPipeWrapper.Json
 {
     /// <summary>
     /// JsonExtension

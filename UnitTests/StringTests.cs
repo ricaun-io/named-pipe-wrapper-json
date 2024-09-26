@@ -1,4 +1,4 @@
-﻿using NamedPipeWrapper;
+﻿using ricaun.NamedPipeWrapper;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

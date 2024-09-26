@@ -1,4 +1,4 @@
-﻿namespace NamedPipeWrapper.Json.Json
+﻿namespace ricaun.NamedPipeWrapper.Json.Json
 {
 #if NETFRAMEWORK
     using System.Web.Script.Serialization;

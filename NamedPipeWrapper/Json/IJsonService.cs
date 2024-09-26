@@ -1,4 +1,4 @@
-﻿namespace NamedPipeWrapper.Json
+﻿namespace ricaun.NamedPipeWrapper.Json
 {
     /// <summary>
     /// Represents a service for JSON serialization and deserialization.

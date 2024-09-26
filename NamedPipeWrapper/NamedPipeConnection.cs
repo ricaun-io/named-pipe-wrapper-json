@@ -5,11 +5,11 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
-using NamedPipeWrapper.IO;
-using NamedPipeWrapper.Threading;
+using ricaun.NamedPipeWrapper.IO;
+using ricaun.NamedPipeWrapper.Threading;
 using System.Collections.Concurrent;
 
-namespace NamedPipeWrapper
+namespace ricaun.NamedPipeWrapper
 {
     /// <summary>
     /// Represents a connection between a named pipe client and server.
