@@ -8,7 +8,7 @@
 
 Named Pipe Wrapper Json for .NET Framework 4.0 and .NET Core 6.0.
 
-***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper), the code updated to support NET Core and json.***
+***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper), updated to support NET Core and Json.***
 
 ## PackageReference
 
@@ -93,7 +93,7 @@ JsonExtension.JsonService = new MyJsonService();
 
 ## Release
 
-* [Latest release](https://github.com/ricaun-io/ricaun.NamedPipeWrapper.Json/releases/latest)
+* [Latest release](https://github.com/ricaun-io/named-pipe-wrapper-json/releases/latest)
 
 ## License
 
@@ -101,4 +101,4 @@ This project is [licensed](LICENSE) under the [MIT License](https://en.wikipedia
 
 ---
 
-Do you like this project? Please [star this project on GitHub](https://github.com/ricaun-io/ricaun.NamedPipeWrapper.Json/stargazers)!
+Do you like this project? Please [star this project on GitHub](https://github.com/ricaun-io/named-pipe-wrapper-json/stargazers)!
