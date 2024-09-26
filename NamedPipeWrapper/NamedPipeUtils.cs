@@ -1,6 +1,6 @@
-﻿using NamedPipeWrapper;
+﻿using ricaun.NamedPipeWrapper;
 
-namespace NamedPipeWrapper
+namespace ricaun.NamedPipeWrapper
 {
     /// <summary>
     /// NamedPipeUtils

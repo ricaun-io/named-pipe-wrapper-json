@@ -1,4 +1,4 @@
-using NamedPipeWrapper.Json;
+using ricaun.NamedPipeWrapper.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +8,7 @@ using System.Net;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace NamedPipeWrapper.IO
+namespace ricaun.NamedPipeWrapper.IO
 {
     /// <summary>
     /// Wraps a <see cref="PipeStream"/> object and writes to it.  Serializes .NET CLR objects specified by <typeparamref name="T"/>

@@ -1,10 +1,10 @@
-﻿using NamedPipeWrapper.IO;
-using NamedPipeWrapper.Threading;
+﻿using ricaun.NamedPipeWrapper.IO;
+using ricaun.NamedPipeWrapper.Threading;
 using System;
 using System.Collections.Generic;
 using System.IO.Pipes;
 
-namespace NamedPipeWrapper
+namespace ricaun.NamedPipeWrapper
 {
     /// <summary>
     /// NamedPipeServer

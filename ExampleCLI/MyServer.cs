@@ -1,5 +1,5 @@
 ﻿using System;
-using NamedPipeWrapper;
+using ricaun.NamedPipeWrapper;
 
 namespace ExampleCLI
 {

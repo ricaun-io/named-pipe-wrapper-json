@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NamedPipeWrapper
+namespace ricaun.NamedPipeWrapper
 {
     /// <summary>
     /// Handles exceptions thrown during a read or write operation on a named pipe.
