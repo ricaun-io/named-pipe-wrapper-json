@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NamedPipeWrapper.Json.Json;
+using System;
 
 namespace NamedPipeWrapper.Json
 {
@@ -8,6 +9,28 @@ namespace NamedPipeWrapper.Json
     public static class JsonExtension
     {
         /// <summary>
+        /// IJsonService
+        /// </summary>
+        public static IJsonService JsonService { get; set; } = CreateJsonService();
+
+        /// <summary>
+        /// Create JsonService
+        /// </summary>
+        /// <returns></returns>
+        /// <remarks>
+        /// If NewtonsoftJsonService is available, use it.
+        /// </remarks>
+        private static IJsonService CreateJsonService()
+        {
+            try
+            {
+                return new NewtonsoftJsonService();
+            }
+            catch { };
+            return new JsonService();
+        }
+
+        /// <summary>
         /// JsonDeserialize
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -15,7 +38,7 @@ namespace NamedPipeWrapper.Json
         /// <returns></returns>
         public static T JsonDeserialize<T>(this string value)
         {
-            return JsonUtils.DeserializeObject<T>(value);
+            return JsonService.Deserialize<T>(value);
         }
 
         /// <summary>
@@ -26,7 +49,7 @@ namespace NamedPipeWrapper.Json
         /// <returns></returns>
         public static string JsonSerialize<T>(this T value)
         {
-            return JsonUtils.SerializeObject<T>(value);
+            return JsonService.Serialize(value);
         }
     }
 }
