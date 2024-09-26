@@ -22,12 +22,15 @@ Available as a [NuGet package](https://www.nuget.org/packages/NamedPipeWrapper/)
 
 ## Json
 
-By default, all classes gonna be serialized/deserialized by `JsonUtils` that use `Newtonsoft.Json`, in the end, a JSON string is passed using the `PipeStream`.
+By default, all classes gonna be serialized/deserialized by `JsonExtension.JsonService` with the interface `IJsonService`, in the end, a JSON string is passed using the `PipeStream`.
+
+If `Newtonsoft.Json` exists in the project, the `NewtonsoftJsonService` will be used instead of the default `JsonService`. 
+
+The default `JsonService` for NETFRAMWORK use `System.Web.Extensions`, and for NETCOREAPP the `System.Text.Json`.
 
 # Requirements
 
 * Requires .NET 4.0 full.
-* Requires [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) >= 9.0.1
 
 # Usage
 
