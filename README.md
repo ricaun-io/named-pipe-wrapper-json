@@ -1,24 +1,28 @@
-# Named Pipe Wrapper Json for .NET 4.0 and .NET6.0+
+# ricaun.NamedPipeWrapper.Json
 
 [![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](https://github.com/ricaun-io/named-pipe-wrapper-json)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Build](https://github.com/ricaun-io/named-pipe-wrapper-json/actions/workflows/Build.yml/badge.svg)](https://github.com/ricaun-io/named-pipe-wrapper-json/actions)
+[![nuget](https://img.shields.io/nuget/v/ricaun.NamedPipeWrapper.Json?logo=nuget&label=nuget&color=blue)](https://www.nuget.org/packages/ricaun.NamedPipeWrapper.Json)
+
+Named Pipe Wrapper Json for .NET 4.0 and .NET6.0.
 
 ***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper)***
 
-A simple, easy to use, strongly-typed wrapper around .NET named pipes.
+## PackageReference
 
-# NuGet Package
+```xml
+<PackageReference Include="ricaun.NamedPipeWrapper.Json" Version="*" />
+```
 
-Available as a [NuGet package](https://www.nuget.org/packages/NamedPipeWrapper/).
-
-# Features
+## Features
 
 *  Create named pipe servers that can handle multiple client connections simultaneously.
 *  Send strongly-typed messages between clients and servers: any serializable .NET object can be sent over a pipe and will be automatically serialized/deserialized, including cyclical references and complex object graphs.
 *  Messages are sent and received asynchronously on a separate background thread and marshalled back to the calling thread (typically the UI).
 *  Supports large messages - up to 300 MiB.
+*  Design to work inside Autodesk Revit without conflict.
 
 ## Json
 
@@ -28,11 +32,8 @@ If `Newtonsoft.Json` exists in the project, the `NewtonsoftJsonService` will be 
 
 The default `JsonService` for NETFRAMWORK use `System.Web.Extensions`, and for NETCOREAPP the `System.Text.Json`.
 
-# Requirements
 
-* Requires .NET 4.0 full.
-
-# Usage
+## Usage
 
 Server:
 
@@ -74,6 +75,30 @@ client.Start();
 // ...
 ```
 
-# MIT License
+## NamedPipeUtils
 
-Named Pipe Wrapper for .NET is licensed under the [MIT license](LICENSE).
+The `NamedPipeUtils` class provides some utility methods for working with named pipes.
+
+```c#
+bool pipeExists = NamedPipeUtils.PipeFileExists("MyServerPipe");
+```
+
+## IJsonService
+
+Override the default `JsonService` with the interface `IJsonService`:
+
+```c#
+JsonExtension.JsonService = new MyJsonService();
+```
+
+## Release
+
+* [Latest release](https://github.com/ricaun-io/ricaun.NamedPipeWrapper.Json/releases/latest)
+
+## License
+
+This project is [licensed](LICENSE) under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
+
+---
+
+Do you like this project? Please [star this project on GitHub](https://github.com/ricaun-io/ricaun.NamedPipeWrapper.Json/stargazers)!
