@@ -1,9 +1,9 @@
 # Named Pipe Wrapper Json for .NET 4.0 and .NET6.0+
 
-[![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](../..)
+[![Visual Studio 2022](https://img.shields.io/badge/Visual%20Studio-2022-blue)](https://github.com/ricaun-io/named-pipe-wrapper-json)
 [![Nuke](https://img.shields.io/badge/Nuke-Build-blue)](https://nuke.build/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Build](../../actions/workflows/Build.yml/badge.svg)](../../actions)
+[![Build](https://github.com/ricaun-io/named-pipe-wrapper-json/actions/workflows/Build.yml/badge.svg)](https://github.com/ricaun-io/named-pipe-wrapper-json/actions)
 
 ***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper)***
 
