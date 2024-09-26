@@ -21,6 +21,13 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+      - run: dotnet tool install --global NETFrameworkTool
+      - run: NETFrameworkTool --net 4.0 --install
+      - run: NETFrameworkTool --net 4.8 --install
+  
       - name: Run './build/build.cmd'
         run: ./build/build.cmd --root ./build
         env:
