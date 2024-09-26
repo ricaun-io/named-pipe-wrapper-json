@@ -6,9 +6,9 @@
 [![Build](https://github.com/ricaun-io/named-pipe-wrapper-json/actions/workflows/Build.yml/badge.svg)](https://github.com/ricaun-io/named-pipe-wrapper-json/actions)
 [![nuget](https://img.shields.io/nuget/v/ricaun.NamedPipeWrapper.Json?logo=nuget&label=nuget&color=blue)](https://www.nuget.org/packages/ricaun.NamedPipeWrapper.Json)
 
-Named Pipe Wrapper Json for .NET 4.0 and .NET6.0.
+Named Pipe Wrapper Json for .NET Framework 4.0 and .NET Core 6.0.
 
-***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper)***
+***This project is based of Andrew C. Dvorak's work at [Named Pipe Wrapper](https://github.com/acdvorak/named-pipe-wrapper), the code updated to support NET Core and json.***
 
 ## PackageReference
 
